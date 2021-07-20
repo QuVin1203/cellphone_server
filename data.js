@@ -6,7 +6,16 @@ export const data = {
             "price": 31990000,
             "salePrice": 30000000,
             "type": "iphone",
-            "image": "https://cdn.tgdd.vn/Products/Images/42/213033/iphone-12-pro-max-xanh-duong-new-600x600-600x600.jpg"
+            "image": "https://cdn.tgdd.vn/Products/Images/42/213033/iphone-12-pro-max-xanh-duong-new-600x600-600x600.jpg",
+            "rating": 5,
+            "numReviews": 1,
+            "reviews": [
+                {
+                    "name": "cao kha hieu",
+                    "star": 5,
+                    "comment": "ngon",
+                }
+            ]
         },
         {
             "id": 2,
@@ -14,7 +23,16 @@ export const data = {
             "price": 12990000,
             "salePrice": 11000000,
             "type": "iphone",
-            "image": "https://cdn.tgdd.vn/Products/Images/42/191483/iphone-xr-128gb-600x600.jpg"
+            "image": "https://cdn.tgdd.vn/Products/Images/42/191483/iphone-xr-128gb-600x600.jpg",
+            "rating": 5,
+            "numReviews": 1,
+            "reviews": [
+                {
+                    "name": "cao kha hieu",
+                    "star": 5,
+                    "comment": "ngon",
+                }
+            ]
         },
         {
             "id": 3,
@@ -22,7 +40,16 @@ export const data = {
             "price": 30990000,
             "salePrice": 29000000,
             "type": "samsung",
-            "image": "https://cdn.tgdd.vn/Products/Images/42/226316/samsung-galaxy-s21-ultra-bac-600x600-1-600x600.jpg"
+            "image": "https://cdn.tgdd.vn/Products/Images/42/226316/samsung-galaxy-s21-ultra-bac-600x600-1-600x600.jpg",
+            "rating": 5,
+            "numReviews": 1,
+            "reviews": [
+                {
+                    "name": "cao kha hieu",
+                    "star": 5,
+                    "comment": "ngon",
+                }
+            ]
         },
         {
             "id": 4,
@@ -30,7 +57,16 @@ export const data = {
             "price": 16990000,
             "salePrice": 15000000,
             "type": "samsung",
-            "image": "https://cdn.tgdd.vn/Products/Images/42/206176/samsung-galaxy-note-10-plus-silver-new-600x600.jpg"
+            "image": "https://cdn.tgdd.vn/Products/Images/42/206176/samsung-galaxy-note-10-plus-silver-new-600x600.jpg",
+            "rating": 5,
+            "numReviews": 1,
+            "reviews": [
+                {
+                    "name": "cao kha hieu",
+                    "star": 5,
+                    "comment": "ngon",
+                }
+            ]
         },
         {
             "id": 5,
@@ -38,7 +74,16 @@ export const data = {
             "price": 8990000,
             "salePrice": 8000000,
             "type": "oppo",
-            "image": "https://cdn.tgdd.vn/Products/Images/42/220438/oppo-reno5-trang-600x600-1-600x600.jpg"
+            "image": "https://cdn.tgdd.vn/Products/Images/42/220438/oppo-reno5-trang-600x600-1-600x600.jpg",
+            "rating": 5,
+            "numReviews": 1,
+            "reviews": [
+                {
+                    "name": "cao kha hieu",
+                    "star": 5,
+                    "comment": "ngon",
+                }
+            ]
         },
         {
             "id": 6,
@@ -46,7 +91,16 @@ export const data = {
             "price": 3990000,
             "salePrice": 3000000,
             "type": "oppo",
-            "image": "https://cdn.tgdd.vn/Products/Images/42/229885/oppo-a15-black-600x600-2-600x600.jpg"
+            "image": "https://cdn.tgdd.vn/Products/Images/42/229885/oppo-a15-black-600x600-2-600x600.jpg",
+            "rating": 5,
+            "numReviews": 1,
+            "reviews": [
+                {
+                    "name": "cao kha hieu",
+                    "star": 5,
+                    "comment": "ngon",
+                }
+            ]
         },
         {
             "id": 7,
@@ -54,7 +108,16 @@ export const data = {
             "price": 5590000,
             "salePrice": 5300000,
             "type": "vivo",
-            "images": "https://cdn.tgdd.vn/Products/Images/42/228950/vivo-y51-bac-600x600-600x600.jpg"
+            "images": "https://cdn.tgdd.vn/Products/Images/42/228950/vivo-y51-bac-600x600-600x600.jpg",
+            "rating": 5,
+            "numReviews": 1,
+            "reviews": [
+                {
+                    "name": "cao kha hieu",
+                    "star": 5,
+                    "comment": "ngon",
+                }
+            ]
         },
         {
             "id": 8,
@@ -62,7 +125,16 @@ export const data = {
             "price": 7790000,
             "salePrice": 7780000,
             "type": "vivo",
-            "image": "https://cdn.tgdd.vn/Products/Images/42/232614/vivov202021den-600x600.jpg"
+            "image": "https://cdn.tgdd.vn/Products/Images/42/232614/vivov202021den-600x600.jpg",
+            "rating": 5,
+            "numReviews": 1,
+            "reviews": [
+                {
+                    "name": "cao kha hieu",
+                    "star": 5,
+                    "comment": "ngon",
+                }
+            ]
         },
         {
             "id": 9,
@@ -70,7 +142,16 @@ export const data = {
             "price": 4690000,
             "salePrice": 4680000,
             "type": "xiaomi",
-            "image": "https://cdn.tgdd.vn/Products/Images/42/222758/xiaomi-redmi-note-10-thumb-green-600x600-1-600x600.jpg"
+            "image": "https://cdn.tgdd.vn/Products/Images/42/222758/xiaomi-redmi-note-10-thumb-green-600x600-1-600x600.jpg",
+            "rating": 5,
+            "numReviews": 1,
+            "reviews": [
+                {
+                    "name": "cao kha hieu",
+                    "star": 5,
+                    "comment": "ngon",
+                }
+            ]
         },
         {
             "id": 10,
@@ -78,7 +159,16 @@ export const data = {
             "price": 21990000,
             "salePrice": 21880000,
             "type": "xiaomi",
-            "image": "https://cdn.tgdd.vn/Products/Images/42/226264/xiaomi-mi-11-xanhduong-600x600-600x600.jpg"
+            "image": "https://cdn.tgdd.vn/Products/Images/42/226264/xiaomi-mi-11-xanhduong-600x600-600x600.jpg",
+            "rating": 5,
+            "numReviews": 1,
+            "reviews": [
+                {
+                    "name": "cao kha hieu",
+                    "star": 5,
+                    "comment": "ngon",
+                }
+            ]
         },
         {
             "id": 11,
@@ -86,7 +176,16 @@ export const data = {
             "price": 8490000,
             "salePrice": 8000000,
             "type": "realme",
-            "image": "https://cdn.tgdd.vn/Products/Images/42/227689/realme-7-pro-bac-600x600.jpg"
+            "image": "https://cdn.tgdd.vn/Products/Images/42/227689/realme-7-pro-bac-600x600.jpg",
+            "rating": 5,
+            "numReviews": 1,
+            "reviews": [
+                {
+                    "name": "cao kha hieu",
+                    "star": 5,
+                    "comment": "ngon",
+                }
+            ]
         },
         {
             "id": 12,
@@ -94,7 +193,16 @@ export const data = {
             "price": 2790000,
             "salePrice": 2790000,
             "type": "realme",
-            "image": "https://cdn.tgdd.vn/Products/Images/42/218361/realme-c3-do-600x600-1-600x600.jpg"
+            "image": "https://cdn.tgdd.vn/Products/Images/42/218361/realme-c3-do-600x600-1-600x600.jpg",
+            "rating": 5,
+            "numReviews": 1,
+            "reviews": [
+                {
+                    "name": "cao kha hieu",
+                    "star": 5,
+                    "comment": "ngon",
+                }
+            ]
         },
         {
             "id": 13,
@@ -102,7 +210,16 @@ export const data = {
             "price": 7490000,
             "salePrice": 7000000,
             "type": "vsmart",
-            "image": "https://cdn.tgdd.vn/Products/Images/42/228531/vsmart-aris-pro-green-600jpg-600x600.jpg"
+            "image": "https://cdn.tgdd.vn/Products/Images/42/228531/vsmart-aris-pro-green-600jpg-600x600.jpg",
+            "rating": 5,
+            "numReviews": 1,
+            "reviews": [
+                {
+                    "name": "cao kha hieu",
+                    "star": 5,
+                    "comment": "ngon",
+                }
+            ]
         },
         {
             "id": 14,
@@ -110,7 +227,16 @@ export const data = {
             "price": 2290000,
             "salePrice": 2000000,
             "type": "vsmart",
-            "image": "https://cdn.tgdd.vn/Products/Images/42/225158/vsmart-start-3gb-den-600x600.jpg"
+            "image": "https://cdn.tgdd.vn/Products/Images/42/225158/vsmart-start-3gb-den-600x600.jpg",
+            "rating": 5,
+            "numReviews": 1,
+            "reviews": [
+                {
+                    "name": "cao kha hieu",
+                    "star": 5,
+                    "comment": "ngon",
+                }
+            ]
         },
         {
             "id": 15,
@@ -118,7 +244,16 @@ export const data = {
             "price": 2590000,
             "salePrice": 2000000,
             "type": "samsung",
-            "image": "https://cdn.tgdd.vn/Products/Images/42/235440/samsung-galaxy-a52-5g-thumb-black-600x600-600x600.jpg"
+            "image": "https://cdn.tgdd.vn/Products/Images/42/235440/samsung-galaxy-a52-5g-thumb-black-600x600-600x600.jpg",
+            "rating": 5,
+            "numReviews": 1,
+            "reviews": [
+                {
+                    "name": "cao kha hieu",
+                    "star": 5,
+                    "comment": "ngon",
+                }
+            ]
         },
         {
             "id": 16,
@@ -126,7 +261,16 @@ export const data = {
             "price": 11490000,
             "salePrice": 11000000,
             "type": "iphone",
-            "image": "https://cdn.tgdd.vn/Products/Images/42/230410/iphone-se-2020-trang-600x600-600x600.jpg"
+            "image": "https://cdn.tgdd.vn/Products/Images/42/230410/iphone-se-2020-trang-600x600-600x600.jpg",
+            "rating": 5,
+            "numReviews": 1,
+            "reviews": [
+                {
+                    "name": "cao kha hieu",
+                    "star": 5,
+                    "comment": "ngon",
+                }
+            ]
         },
         {
             "id": 17,
@@ -134,7 +278,16 @@ export const data = {
             "price": 25490000,
             "salePrice": 23000000,
             "type": "iphone",
-            "image": "https://cdn.tgdd.vn/Products/Images/42/230410/iphone-se-2020-trang-600x600-600x600.jpg"
+            "image": "https://cdn.tgdd.vn/Products/Images/42/230410/iphone-se-2020-trang-600x600-600x600.jpg",
+            "rating": 5,
+            "numReviews": 1,
+            "reviews": [
+                {
+                    "name": "cao kha hieu",
+                    "star": 5,
+                    "comment": "ngon",
+                }
+            ]
         },
         {
             "id": 18,
@@ -142,7 +295,16 @@ export const data = {
             "price": 17490000,
             "salePrice": 15000000,
             "type": "iphone",
-            "image": "https://cdn.tgdd.vn/Products/Images/42/228741/iphone-mini-do-new-600x600-600x600.jpg"
+            "image": "https://cdn.tgdd.vn/Products/Images/42/228741/iphone-mini-do-new-600x600-600x600.jpg",
+            "rating": 5,
+            "numReviews": 1,
+            "reviews": [
+                {
+                    "name": "cao kha hieu",
+                    "star": 5,
+                    "comment": "ngon",
+                }
+            ]
         },
         {
             "id": 19,
@@ -150,7 +312,16 @@ export const data = {
             "price": 6490000,
             "salePrice": 6000000,
             "type": "samsung",
-            "image": "https://cdn.tgdd.vn/Products/Images/42/234315/samsung-galaxy-a32-4g-thumb-tim-600x600-600x600.jpg"
+            "image": "https://cdn.tgdd.vn/Products/Images/42/234315/samsung-galaxy-a32-4g-thumb-tim-600x600-600x600.jpg",
+            "rating": 5,
+            "numReviews": 1,
+            "reviews": [
+                {
+                    "name": "cao kha hieu",
+                    "star": 5,
+                    "comment": "ngon",
+                }
+            ]
         },
         {
             "id": 20,
@@ -158,7 +329,16 @@ export const data = {
             "price": 8990000,
             "salePrice": 8000000,
             "type": "samsung",
-            "image": "https://cdn.tgdd.vn/Products/Images/42/217536/samsung-galaxy-m51-trang-new-600x600-600x600.jpg"
+            "image": "https://cdn.tgdd.vn/Products/Images/42/217536/samsung-galaxy-m51-trang-new-600x600-600x600.jpg",
+            "rating": 5,
+            "numReviews": 1,
+            "reviews": [
+                {
+                    "name": "cao kha hieu",
+                    "star": 5,
+                    "comment": "ngon",
+                }
+            ]
         },
         {
             "id": 21,
@@ -166,7 +346,16 @@ export const data = {
             "price": 5000000,
             "salePrice": 5000000,
             "type": "xiaomi",
-            "image": "https://cdn.tgdd.vn/Products/Images/42/222758/xiaomi-redmi-note-10-thumb-green-600x600.jpg"
+            "image": "https://cdn.tgdd.vn/Products/Images/42/222758/xiaomi-redmi-note-10-thumb-green-600x600.jpg",
+            "rating": 5,
+            "numReviews": 1,
+            "reviews": [
+                {
+                    "name": "cao kha hieu",
+                    "star": 5,
+                    "comment": "ngon",
+                }
+            ]
         },
         {
             "id": 22,
@@ -174,7 +363,16 @@ export const data = {
             "price": 7900000,
             "salePrice": 7000000,
             "type": "xiaomi",
-            "image": "https://cdn.tgdd.vn/Products/Images/42/233241/xiaomi-mi-11-lite-4g-blue-600x600.jpg"
+            "image": "https://cdn.tgdd.vn/Products/Images/42/233241/xiaomi-mi-11-lite-4g-blue-600x600.jpg",
+            "rating": 5,
+            "numReviews": 1,
+            "reviews": [
+                {
+                    "name": "cao kha hieu",
+                    "star": 5,
+                    "comment": "ngon",
+                }
+            ]
         },
         {
             "id": 23,
@@ -182,7 +380,16 @@ export const data = {
             "price": 5600000,
             "salePrice": 5000000,
             "type": "xiaomi",
-            "image": "https://cdn.tgdd.vn/Products/Images/42/214924/xiaomi-redmi-note-9s-xanh-new-600x600-600x600.jpg"
+            "image": "https://cdn.tgdd.vn/Products/Images/42/214924/xiaomi-redmi-note-9s-xanh-new-600x600-600x600.jpg",
+            "rating": 5,
+            "numReviews": 1,
+            "reviews": [
+                {
+                    "name": "cao kha hieu",
+                    "star": 5,
+                    "comment": "ngon",
+                }
+            ]
         }
 
     ]

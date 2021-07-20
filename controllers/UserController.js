@@ -10,7 +10,7 @@ export const getAllUser = (req, res) => {
 
 export const registerUser = expressAsyncHandler(async (req, res) => {
     const user = new UserModel({
-        _id: req.body._id,
+        // _id: req.body._id,
         name: req.body.name,
         email: req.body.email,
         password: req.body.password,
@@ -20,6 +20,7 @@ export const registerUser = expressAsyncHandler(async (req, res) => {
     })
     const createUser = user.save();
     res.send({
+        _id: user._id,
         name: user.name,
         email: user.email,
         password: user.password,
