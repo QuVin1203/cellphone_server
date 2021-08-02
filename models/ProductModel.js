@@ -27,23 +27,35 @@ const commentProduct = new Schema({
   replies: [replieCommentProduct]
 })
 
-const Product = new Schema({
-    name: {type: String, required: true},
-    price: {type: Number, required: true},
-    salePrice: {type: Number, required: true},
-    type: {type: String, required: true},
-    image: {type: String},
+const Product = new Schema(
+  {
+    name: { type: String, required: true },
+    price: { type: Number, required: true },
+    salePrice: { type: Number, required: true },
+    type: { type: String, required: true },
+    image: { type: String },
     amount: Number,
-    cloudinary_id: {type: String},
-    
-    rating: { type: Number},
-    numReviews: { type: Number},
+    cloudinary_id: { type: String },
+
+    rating: { type: Number },
+    numReviews: { type: Number },
+    blog: String,
+
     reviews: [reviewProduct],
     comments: [commentProduct],
-    blog: String,
-},{
-    timestamps: true,
+
+    os: String,
+    ram: String,
+    battery: String,
+    rom: String,
+    camera: String,
+    special: String,
+    design: String,
+    screen: String,
   },
+  {
+    timestamps: true,
+  }
 );
 Product.index({name: 'text'});
 

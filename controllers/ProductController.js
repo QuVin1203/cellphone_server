@@ -7,12 +7,12 @@ import {data} from '../data.js'
 export const getAllProduct = expressAsyncHandler(async (req, res) => {
     // await ProductModel.remove()
     // const product = await ProductModel.insertMany(data.products)
-    ProductModel.find()
-        .then(product => res.send(product))
-        .catch(err => console.log(err))
+    // ProductModel.find()
+    //     .then(product => res.send(product))
+    //     .catch(err => console.log(err))
+    const products = await ProductModel.find({})
+    res.send(products)
 })
-
-
 
 export const findProductById = expressAsyncHandler(async (req, res) => {
     const product = await ProductModel.findById({_id: req.params.id})
@@ -24,68 +24,98 @@ export const findProductById = expressAsyncHandler(async (req, res) => {
     }
 })
 
-export const filterProductByType = (req, res) => {
-    ProductModel.find({type: req.params.type})
-        .then(product => res.send(product))
-        .catch(err => console.log(err))
-}
+export const filterProductByType =  expressAsyncHandler(async (req, res) => {
+    // ProductModel.find({type: req.params.type})
+    //     .then(product => res.send(product))
+    //     .catch(err => console.log(err))
 
-export const AddProduct = expressAsyncHandler(async (req, res) => {
+    const filterProductByType = await ProductModel.find({type: req.params.type}).limit(5)
+    res.send(filterProductByType)
+})
+
+export const filterProductByRandomField = expressAsyncHandler(async (req, res) => {
     console.log(req.body)
-    const result = await cloudinary.uploader.upload(req.file.path, {
-        folder: 'dev_setups',
-    });
-
-    const product = new ProductModel({
-        name: req.body.name,
-        price: req.body.price,
-        salePrice: req.body.salePrice,
-        amount: req.body.amount,
-        type: req.body.type,
-        image: result.secure_url,
-        cloudinary_id: result.public_id
-    })
-    const newProduct = await product.save()
-    if(newProduct){
-       return res
-        .status(201)
-        .send({ message: 'New Product Created', data: newProduct })
+    const products = await ProductModel.find(req.body)
+    if(products){
+        res.send(products)
     }else{
-        res.send("error add product")
+        res.send({message: 'product not found'})
     }
 })
+export const AddProduct = expressAsyncHandler(async (req, res) => {
+  const result = await cloudinary.uploader.upload(req.file.path, {
+    folder: "dev_setups",
+  });
+
+  const product = new ProductModel({
+    name: req.body.name,
+    price: req.body.price,
+    salePrice: req.body.salePrice,
+    amount: req.body.amount,
+    type: req.body.type,
+    image: result.secure_url,
+    cloudinary_id: result.public_id,
+    rating: 0,
+
+    os: req.body.os,
+    ram: req.body.ram,
+    battery: req.body.battery,
+    rom: req.body.rom,
+    camera: req.body.camera,
+    special: req.body.special,
+    design: req.body.design,
+    screen: req.body.screen,
+  });
+  const newProduct = await product.save();
+
+  if (newProduct) {
+    return res
+      .status(201)
+      .send({ message: "New Product Created", data: newProduct });
+  } else {
+    res.send("error add product");
+  }
+});
 
 export const UpdateProduct = expressAsyncHandler(async (req, res) => {
-    console.log('update: ', req.body)
-    const product = await ProductModel.findById(req.body._id)
+  console.log("update: ", req.body);
+  const product = await ProductModel.findById(req.body._id);
 
-    await cloudinary.uploader.destroy(product.cloudinary_id);
+  await cloudinary.uploader.destroy(product.cloudinary_id);
 
-    let result;
-    if(req.file){
-        result = await cloudinary.uploader.upload(req.file.path);
-        console.log(result)
+  let result;
+  if (req.file) {
+    result = await cloudinary.uploader.upload(req.file.path);
+    console.log(result);
+  }
+
+  if (product) {
+    product.name = req.body.name;
+    product.amount = req.body.amount;
+    product.price = req.body.price;
+    product.salePrice = req.body.salePrice;
+    product.type = req.body.type;
+    product.image = result?.secure_url || product.image;
+    product.rating = 0;
+    product.cloulinary_id = result?.public_id || product.cloudinary_id;
+
+    product.os = req.body.os;
+    product.ram = req.body.ram;
+    product.battery = req.body.battery;
+    product.rom = req.body.rom;
+    product.camera = req.body.camera;
+    product.special = req.body.special;
+    product.design = req.body.design;
+    product.screen = req.body.screen;
+
+    const updateProduct = await product.save();
+    if (updateProduct) {
+      res.send("update success");
     }
+  }
 
-    if(product){
-        product.name = req.body.name
-        product.amount = req.body.amount
-        product.price = req.body.price
-        product.salePrice = req.body.salePrice
-        product.type = req.body.type
-        product.image = result?.secure_url || product.image
-        product.rating = 0
-        product.cloulinary_id = result?.public_id || product.cloudinary_id
-        
-        const updateProduct = await product.save();
-        if(updateProduct){
-            res.send('update success')
-        }
-    }
-
-    return res.send('update fail')
-    
-})
+  return res.send("update fail");
+});
 
 export const DeleteProduct = expressAsyncHandler(async (req, res) => {
     const deleteProduct = await ProductModel.findById(req.params.id)
@@ -103,8 +133,8 @@ export const DeleteProduct = expressAsyncHandler(async (req, res) => {
 })
 
 export const SearchProduct = expressAsyncHandler(async (req, res) => {
-    const search = req.query.name
-    const product = await ProductModel.find({name: {$regex: search, $options: '$i'}})
+    const name = req.query.name
+    const product = await ProductModel.find({name: {$regex: name, $options: '$i'}})
     
     product.length > 0 ? res.send(product) : res.send({message: ' khong tim thay sp'})
 })

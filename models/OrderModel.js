@@ -1,11 +1,18 @@
 import mongoose from 'mongoose'
 
 const orderSchema = new mongoose.Schema({
+    order_code: String,
+    to_ward_code: String,
+    to_district_id: Number,
+    token: String,
+
+    cancelOrder: Boolean,
+
     orderItems: [{
         name: { type: String, required: true},
         qty: { type: String, required: true},
         image: { type: String, required: true},
-        price: { type: String, required: true},
+        salePrice: { type: Number, required: true},
         product: {
             type: mongoose.Schema.Types.ObjectId,
             ref: 'Product'

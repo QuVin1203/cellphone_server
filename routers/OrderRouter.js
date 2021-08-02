@@ -14,14 +14,21 @@ import {
   GetAllOrderInAMonth,
   GetAllOrderPaypal,
   GetOrderPaypalByUser,
+  updateOrder,
+  PrintOrderGhn,
+  clientCancelOrder,
 } from "../controllers/OrderController.js";
 import { isAuth, isAdmin } from "../untils/until.js";
 
 const OrderRouter = express.Router();
 
 OrderRouter.post("/create", createOrder);
+OrderRouter.post("/update/:id", updateOrder);
+OrderRouter.post("/cancel/:id", clientCancelOrder);
+OrderRouter.get("/print/:id", PrintOrderGhn);
 OrderRouter.put("/shipping/:id", ShippingProduct);
 OrderRouter.put("/paid/:id", PaidProduct);
+OrderRouter.delete('/delete/:id', DeleteOrder)
 
 OrderRouter.get("/", GetAllOrder);
 OrderRouter.get("/orderPaypal", GetAllOrderPaypal);
@@ -39,6 +46,5 @@ OrderRouter.get("/orderShipping/:id", GetOrderShippingByUser);
 OrderRouter.get("/orderpaid/:id", GetOrderPaidByUser);
 
 
-OrderRouter.delete('/delete/:id', DeleteOrder)
 
 export default OrderRouter

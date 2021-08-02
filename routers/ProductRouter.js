@@ -13,6 +13,7 @@ import {
   RepCommentProduct,
   BlogProduct,
   PinCommentProduct,
+  filterProductByRandomField,
 } from "../controllers/ProductController.js";
 import { isAuth, isAdmin } from "../untils/until.js";
 import { upload } from "../untils/until.js";
@@ -20,6 +21,7 @@ import { upload } from "../untils/until.js";
 const ProductRouter = express.Router();
 
 ProductRouter.get("/:type", filterProductByType);
+ProductRouter.post("/filter/random", filterProductByRandomField);
 ProductRouter.get("/detail/:id", findProductById);
 ProductRouter.get("/", getAllProduct);
 ProductRouter.get(`/pagination/:page`, paginationProduct);
