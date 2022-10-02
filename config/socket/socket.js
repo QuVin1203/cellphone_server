@@ -15,10 +15,8 @@ export const ConnectSocket = (server) => {
 
   // khi client connect to server
   io.on("connection", (socket) => {
-    console.log(socket.id, "connected");
 
     socket.on('join_conversation', idUser => {
-      console.log('idUser: ', idUser)
       ConversationModel.findOne({idUser})
         .then(conversation => {
           if(!conversation) return;
@@ -42,7 +40,6 @@ export const ConnectSocket = (server) => {
 
     // create and join room
     socket.on('create_conversation', currentUser => {
-      console.log('curentUser: ',currentUser)
       const conversation = new ConversationModel({
         idUser: currentUser._id,
         nameConversation: currentUser.name
@@ -66,13 +63,6 @@ export const ConnectSocket = (server) => {
         idConversation
       } = data
 
-      console.log({
-        _id,
-        sender,
-        message,
-        idConversation
-      })
-
       const conversation = await ConversationModel.updateOne(
       {
         _id: idConversation
@@ -83,7 +73,6 @@ export const ConnectSocket = (server) => {
       // {new: true}
       
       )
-      console.log(conversation)
       io.emit('lastMessage', conversation)
 
       const payload = {

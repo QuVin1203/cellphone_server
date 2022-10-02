@@ -33,28 +33,28 @@ ProductRouter.post("/rep/comment/:id", RepCommentProduct);
 
 ProductRouter.post(
   "/create",
-  isAuth,
-  isAdmin,
+  // isAuth,
+  // isAdmin,
   upload.single("image"),
   AddProduct
 );
 ProductRouter.put(
   "/update",
-  isAuth,
-  isAdmin,
+  // isAuth,
+  // isAdmin,
   upload.single("image"),
   UpdateProduct
 );
 ProductRouter.post(
   "/blog/:id",
-  isAuth,
-  isAdmin,
+  // isAuth,
+  // isAdmin,
   BlogProduct
 );
 ProductRouter.delete(
   "/delete/:id",
-  isAuth,
-  isAdmin,
+  // isAuth,
+  // isAdmin,
   upload.single("image"),
   DeleteProduct
 );

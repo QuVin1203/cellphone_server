@@ -22,7 +22,6 @@ export const getMessageByConversation = (req, res) => {
         .populate('idConversation')
         .exec((err, messages) => {
             if (!messages) {
-                console.log('that bai')
                 return res.status(400).json({
                     message: 'Thất bại'
                 })

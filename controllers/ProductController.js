@@ -34,7 +34,6 @@ export const filterProductByType =  expressAsyncHandler(async (req, res) => {
 })
 
 export const filterProductByRandomField = expressAsyncHandler(async (req, res) => {
-    console.log(req.body)
     const products = await ProductModel.find(req.body)
     if(products){
         res.send(products)
@@ -52,7 +51,7 @@ export const AddProduct = expressAsyncHandler(async (req, res) => {
     price: req.body.price,
     salePrice: req.body.salePrice,
     amount: req.body.amount,
-    type: req.body.type,
+    type: req.body.type || 'iphone',
     image: result.secure_url,
     cloudinary_id: result.public_id,
     rating: 0,
@@ -78,7 +77,6 @@ export const AddProduct = expressAsyncHandler(async (req, res) => {
 });
 
 export const UpdateProduct = expressAsyncHandler(async (req, res) => {
-  console.log("update: ", req.body);
   const product = await ProductModel.findById(req.body._id);
 
   await cloudinary.uploader.destroy(product.cloudinary_id);
@@ -86,7 +84,6 @@ export const UpdateProduct = expressAsyncHandler(async (req, res) => {
   let result;
   if (req.file) {
     result = await cloudinary.uploader.upload(req.file.path);
-    console.log(result);
   }
 
   if (product) {
@@ -120,14 +117,12 @@ export const UpdateProduct = expressAsyncHandler(async (req, res) => {
 export const DeleteProduct = expressAsyncHandler(async (req, res) => {
     const deleteProduct = await ProductModel.findById(req.params.id)
 
-    await cloudinary.uploader.destroy(deleteProduct.cloudinary_id);
+    // await cloudinary.uploader.destroy(deleteProduct.cloudinary_id);
 
     if(deleteProduct){
         await deleteProduct.remove()
-        console.log('delete')
         res.send({message: 'product deleted'})
     } else{
-        console.log('error delete product')
         res.send('error in deletetion')
     }
 })
@@ -162,7 +157,6 @@ export const RateProduct = expressAsyncHandler(async (req, res) => {
     const product = await ProductModel.findById(req.params.id)
     if(product){
         const existsUser = product.reviews.find(x => x.name === req.body.name)
-        console.log(existsUser)
         if(existsUser){
             res.send({message: 'ban da danh gia san pham nay'})
         }else{
@@ -178,7 +172,6 @@ export const RateProduct = expressAsyncHandler(async (req, res) => {
 })
 
 export const CommentProduct = expressAsyncHandler(async (req, res) => {
-    console.log(req.body)
     const product = await ProductModel.findById(req.params.id)
     if(product){
         product.comments.push(req.body)
@@ -205,7 +198,6 @@ export const RepCommentProduct = expressAsyncHandler(async (req, res) => {
 })
 
 export const PinCommentProduct = expressAsyncHandler(async (req, res) => {
-    console.log(req.body, req.params.id)
     const product = await ProductModel.findById(req.params.id)
     if(product){
         const indexComment = product.comments.findIndex(item => item._id == req.body.idComment)
@@ -220,7 +212,6 @@ export const PinCommentProduct = expressAsyncHandler(async (req, res) => {
 })
 
 export const BlogProduct = expressAsyncHandler(async (req, res) => {
-    console.log(req.body.blogContent)
     const product = await ProductModel.findById({_id: req.params.id})
     
     if(product){

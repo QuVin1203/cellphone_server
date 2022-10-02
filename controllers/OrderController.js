@@ -90,35 +90,35 @@ export const updateOrder = expressAsyncHandler(async (req, res) => {
       cod_amount: updateOrder.paymentMethod === "payOnline" ? 0 : updateOrder.totalPrice,
       items,
     };
+    updateOrder.order_code = req.params.id;
+    await updateOrder.save();
+    res.send(updateOrder);
 
-    try {
-      const { data } = await axios.post(
-        "https://dev-online-gateway.ghn.vn/shiip/public-api/v2/shipping-order/create",
-        orderGhn,
-        {
-          headers: {
-            shop_id: process.env.SHOP_ID,
-            Token: process.env.TOKEN_GHN,
-          },
-        }
-      );
+    // try {
+    //   const { data } = await axios.post(
+    //     "https://dev-online-gateway.ghn.vn/shiip/public-api/v2/shipping-order/create",
+    //     orderGhn,
+    //     {
+    //       headers: {
+    //         shop_id: process.env.SHOP_ID,
+    //         Token: process.env.TOKEN_GHN,
+    //       },
+    //     }
+    //   );
 
-      const order_code = data.data.order_code;
-      console.log("order_code: ", order_code);
+    //   const order_code = data.data.order_code;
 
-      updateOrder.order_code = order_code;
-      await updateOrder.save();
-      res.send(updateOrder);
-    } catch (error) {
-      console.log(error);
-    }
+    //   updateOrder.order_code = order_code;
+    //   await updateOrder.save();
+    //   res.send(updateOrder);
+    // } catch (error) {
+    // }
   } else {
     res.send({ msg: "product not found" });
   }
 });
 
 export const PrintOrderGhn = expressAsyncHandler(async (req, res) => {
-  console.log('print order')
   const Order = await OrderModel.findById({ _id: req.params.id });
   if (Order) {
     let token;
@@ -137,7 +137,6 @@ export const PrintOrderGhn = expressAsyncHandler(async (req, res) => {
 
       token = data.data.token;
       Order.token = token;
-      console.log(Order, token);
       await Order.save();
 
       const result = await axios.get(
@@ -148,11 +147,8 @@ export const PrintOrderGhn = expressAsyncHandler(async (req, res) => {
           },
         }
       );
-      console.log("result: ", result.config.url);
-
       res.send(result.config.url);
     } catch (error) {
-      console.log(error);
     }
     
   } else {
@@ -229,7 +225,6 @@ export const DeleteOrder = expressAsyncHandler(async (req, res) => {
 });
 
 export const ShippingProduct = expressAsyncHandler(async (req, res) => {
-  console.log("shipping");
   const status = "shipping";
   const Order = await OrderModel.findById({ _id: req.params.id });
   if (Order) {
@@ -242,7 +237,6 @@ export const ShippingProduct = expressAsyncHandler(async (req, res) => {
 });
 
 export const PaidProduct = expressAsyncHandler(async (req, res) => {
-  console.log("paid");
   const status = "paid";
   const Order = await OrderModel.findByIdAndUpdate(
     { _id: req.params.id },

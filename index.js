@@ -23,7 +23,7 @@ dotenv.config();
 process.env.TOKEN_SECRET;
 
 const app = express()
-const PORT = process.env.PORT || 5000
+const PORT = process.env.PORT || 4000
 const server = createServer(app)
 
 ConnectSocket(server)
@@ -51,7 +51,6 @@ app.post('/api/upload', async (req, res) => {
         const uploadResponse = await cloudinary.uploader.upload(fileStr, {
             upload_preset: 'dev_setups',
         });
-        console.log(uploadResponse);
         res.json({ msg: 'yaya' });
     } catch (err) {
         console.error(err);

@@ -9,7 +9,6 @@ export const createOptionByproperty = expressAsyncHandler(async (req, res) => {
     property: req.body.property,
     options: req.body.options,
   });
-  console.log(SelectListItem);
   await SelectListItem.save();
   res.send(SelectListItem);
 });
@@ -24,7 +23,6 @@ export const getAllOptionByproperty = expressAsyncHandler(async (req, res) => {
 });
 
 export const UpdateSelectOption = expressAsyncHandler(async (req, res) => {
-  console.log("update", req.body);
   const UpdateSelect = await SelectListModel.findById({ _id: req.params.id });
   if (UpdateSelect) {
     UpdateSelect.name = req.body.name;
