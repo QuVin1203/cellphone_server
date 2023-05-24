@@ -81,7 +81,6 @@ export const ConnectSocket = (server) => {
         message, 
         _id
       }
-      console.log(payload)
 
       io.to(idConversation).emit('newMessage', payload)
       

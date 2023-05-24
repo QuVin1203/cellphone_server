@@ -55,7 +55,9 @@ export const clientCancelOrder = expressAsyncHandler(async (req, res) => {
 });
 
 export const updateOrder = expressAsyncHandler(async (req, res) => {
+  console.log('updateOrder')
   let updateOrder = await OrderModel.findById({ _id: req.params.id });
+  console.log(updateOrder)
 
   if (updateOrder) {
     let items = [];
@@ -67,52 +69,100 @@ export const updateOrder = expressAsyncHandler(async (req, res) => {
 
       items.push(item);
     });
+    // const orderGhn = {
+    //   payment_type_id: 2,
+
+    //   to_name: updateOrder.name,
+    //   to_phone: updateOrder.shippingAddress.phone,
+    //   to_address: `${updateOrder.shippingAddress.province}, ${updateOrder.shippingAddress.district}, ${updateOrder.shippingAddress.ward}, ${updateOrder.shippingAddress.detail}`,
+    //   to_ward_name: `${updateOrder.shippingAddress.ward}`,
+    //   to_ward_code: updateOrder.to_ward_code,
+    //   to_district_id: updateOrder.to_district_id,
+    //   to_district_name: `${updateOrder.shippingAddress.district}`,
+    //   to_province_name: `${updateOrder.shippingAddress.province}`,
+
+    //   weight: 200,
+    //   length: 1,
+    //   width: 19,
+    //   height: 10,
+
+    //   service_id: 0,
+    //   service_type_id: 2,
+
+    //   note: "",
+    //   required_note: "KHONGCHOXEMHANG",
+
+    //   cod_amount: updateOrder.paymentMethod === "payOnline" ? 0 : updateOrder.totalPrice,
+    //   items,
+    // };
+
     const orderGhn = {
-      payment_type_id: 2,
-
-      to_name: updateOrder.name,
-      to_phone: updateOrder.shippingAddress.phone,
+      "payment_type_id": 2,
+      "note": "Tintest 123",
+      "from_name":"Tin",
+      "from_phone":"0909999999",
+      "from_address":"123 Đường 3/2",
+      "from_ward_name":"Phường 5",
+      "from_district_name":"Quận 11",
+      "from_province_name":"TP Hồ Chí Minh",
+      "required_note": "KHONGCHOXEMHANG",
+      "return_name": "Tin",
+      "return_phone": "0909999999",
+      "return_address": "123 Đường 3/2",
+      "return_ward_name": "Phường 5",
+      "return_district_name": "Quận 11",
+      "return_province_name":"TP Hồ Chí Minh",
+      "client_order_code": "",
+      "to_name": updateOrder.name,
+      "to_phone": updateOrder.shippingAddress.phone,
       to_address: `${updateOrder.shippingAddress.province}, ${updateOrder.shippingAddress.district}, ${updateOrder.shippingAddress.ward}, ${updateOrder.shippingAddress.detail}`,
-      to_ward_code: updateOrder.to_ward_code,
-      to_district_id: updateOrder.to_district_id,
-
-      weight: 200,
-      length: 1,
-      width: 19,
-      height: 10,
-
-      service_id: 0,
-      service_type_id: 2,
-
-      note: "",
-      required_note: "KHONGCHOXEMHANG",
-
-      cod_amount: updateOrder.paymentMethod === "payOnline" ? 0 : updateOrder.totalPrice,
-      items,
-    };
+      "to_ward_name":updateOrder.shippingAddress.ward,
+      "to_district_name": updateOrder.shippingAddress.district,
+      "to_province_name": updateOrder.shippingAddress.province,
+      "cod_amount": updateOrder.paymentMethod === "payOnline" ? 0 : updateOrder.totalPrice,
+      "content": "Theo New York Times",
+      "weight": 200,
+      "length": 1,
+      "width": 19,
+      "height": 10,
+      "cod_failed_amount": 2000,
+      "pick_station_id": 1444,
+      "deliver_station_id": null,
+      "insurance_value": 10000000,
+      "service_id": 0,
+      "service_type_id":2,
+      "coupon":null,
+      "pick_shift":null,
+      "pickup_time": 1665272576,
+      "items": items
+    }
     updateOrder.order_code = req.params.id;
     await updateOrder.save();
     res.send(updateOrder);
 
-    // try {
-    //   const { data } = await axios.post(
-    //     "https://dev-online-gateway.ghn.vn/shiip/public-api/v2/shipping-order/create",
-    //     orderGhn,
-    //     {
-    //       headers: {
-    //         shop_id: process.env.SHOP_ID,
-    //         Token: process.env.TOKEN_GHN,
-    //       },
-    //     }
-    //   );
+    try {
+      console.log('-----', orderGhn)
+      const { data } = await axios.post(
+        "https://dev-online-gateway.ghn.vn/shiip/public-api/v2/shipping-order/create",
+        orderGhn,
+        {
+          headers: {
+            'Content-Type': 'application/json',
+            shop_id: process.env.SHOP_ID,
+            token: process.env.TOKEN_GHN,
+          },
+        }
+      );
+      console.log({data})
 
-    //   const order_code = data.data.order_code;
+      const order_code = data.data.order_code;
 
-    //   updateOrder.order_code = order_code;
-    //   await updateOrder.save();
-    //   res.send(updateOrder);
-    // } catch (error) {
-    // }
+      updateOrder.order_code = order_code;
+      await updateOrder.save();
+      res.send(updateOrder);
+    } catch (error) {
+      console.log({error: error.message})
+    }
   } else {
     res.send({ msg: "product not found" });
   }
