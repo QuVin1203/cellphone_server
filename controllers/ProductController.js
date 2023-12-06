@@ -2,15 +2,11 @@ import {ProductModel} from '../models/ProductModel.js'
 import expressAsyncHandler from 'express-async-handler'
 import { PinComment } from '../untils/until.js'
 import cloudinary from 'cloudinary'
-import {data} from '../data.js'
+//import {data} from '../data.js'
 
 export const getAllProduct = expressAsyncHandler(async (req, res) => {
-    // await ProductModel.remove()
-    // const product = await ProductModel.insertMany(data.products)
-    // ProductModel.find()
-    //     .then(product => res.send(product))
-    //     .catch(err => console.log(err))
-    const products = await ProductModel.find({})
+    
+const products = await ProductModel.find({})
     res.send(products)
 })
 
@@ -171,11 +167,12 @@ export const RateProduct = expressAsyncHandler(async (req, res) => {
 
 })
 
+//comment
 export const CommentProduct = expressAsyncHandler(async (req, res) => {
     const product = await ProductModel.findById(req.params.id)
     if(product){
-        product.comments.push(req.body)
-        const updateCommentProduct = await product.save()
+        product.comments.push(req.body)//đưa dữ liệu bình luận từ yêu cầu vào mảng comments của sản phẩm
+        const updateCommentProduct = await product.save()//lưu trữ sản phẩm đã cập nhật với bình luận mới vào cơ sở dữ liệu.
         res.send(updateCommentProduct)
     }else{
         res.status(400).send({message: 'product not found'})
@@ -183,10 +180,11 @@ export const CommentProduct = expressAsyncHandler(async (req, res) => {
 
 })
 
+//Rep comment
 export const RepCommentProduct = expressAsyncHandler(async (req, res) => {
     const product = await ProductModel.findById(req.params.id)
     if(product){
-        const indexComment = product.comments.findIndex(item => item._id == req.body.idComment)
+        const indexComment = product.comments.findIndex(item => item._id == req.body.idComment)//tìm chỉ mục của bình luận trong mảng comments của sản phẩm mà khớp với idComment được cung cấp trong yêu cầu
         product.comments[indexComment].replies.push(req.body)
 
         await product.save()
@@ -197,6 +195,8 @@ export const RepCommentProduct = expressAsyncHandler(async (req, res) => {
 
 })
 
+
+//Ghim comment
 export const PinCommentProduct = expressAsyncHandler(async (req, res) => {
     const product = await ProductModel.findById(req.params.id)
     if(product){

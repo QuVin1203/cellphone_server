@@ -1,18 +1,15 @@
 import express from 'express'
-import cors from 'cors'
-import dotenv from 'dotenv'
+import cors from 'cors'//quản lý nguồn
+import dotenv from 'dotenv'//quản lý biến môi trường
 
 import connectDB from './config/db/db.js'
 
 import ProductRouter from './routers/ProductRouter.js'
 import UserRouter from './routers/UserRouter.js'
 import OrderRouter from './routers/OrderRouter.js'
-import ChatRouter from './routers/ChatRouter.js'
 
-import {createServer} from 'http'
-// import {Server} from 'socket.io'
+import {createServer} from 'http'//tạo một máy chủ http để xử lý các yêu cầu từ client
 
-import {ConnectSocket} from './config/socket/socket.js'
 
 import cloudinary from './config/cloudinary/cloudinary.js'
 import PaymentRouter from './routers/PaymentRouter.js'
@@ -26,7 +23,7 @@ const app = express()
 const PORT = process.env.PORT || 4000
 const server = createServer(app)
 
-ConnectSocket(server)
+
 connectDB()
 
 app.use(cors())
@@ -36,7 +33,7 @@ app.use(express.urlencoded({ limit: '50mb', extended: true }));
 app.use('/products', ProductRouter)
 app.use('/user', UserRouter)
 app.use('/order', OrderRouter)
-app.use('/chat', ChatRouter)
+
 app.use('/payment', PaymentRouter)
 app.use('/selectList', SelectListrouter)
 app.use('/typeList', ListTypeProductRouter)
