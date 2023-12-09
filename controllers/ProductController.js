@@ -127,7 +127,7 @@ export const SearchProduct = expressAsyncHandler(async (req, res) => {
     const name = req.query.name
     const product = await ProductModel.find({name: {$regex: name, $options: 'i'}})
     
-    product.length > 0 ? res.send(product) : res.send({message: ' khong tim thay sp'})
+    product.length > 0 ? res.send(product) : res.send({message: ' Không tìm thấy sản phẩm '})
 })
 
 export const paginationProduct = expressAsyncHandler(async (req, res) => {
