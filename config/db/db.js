@@ -16,8 +16,8 @@ async function connectDB(){
     } catch (error) {
         console.log(error)
     }
-}*/
-
+}
+*/
 async function connectDB(){
 mongoose.connect(process.env.MONGODB_URL, {
     useNewUrlParser: true,
